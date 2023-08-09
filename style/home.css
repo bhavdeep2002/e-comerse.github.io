@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Vithkuqi:wght@700&family=Roboto:wght@100&display=swap');
+#imglogo{
+    width: 150px;
+    height: 70px;
+}
+.head{
+    font-size: 52px;
+    font-family: 'Noto Sans Vithkuqi', sans-serif;
+}
+.text{
+    font-size: 20px;
+    font-weight: 600;
+}
+.img img{
+    width: 100%;
+}
+.my-btn{
+    height: 57px;
+}
+.botton{
+margin-top: 5%;
+}
