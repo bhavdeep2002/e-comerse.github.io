@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Vithkuqi:wght@700&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Vithkuqi:wght@700&family=Roboto:wght@100&family=Ruwudu:wght@600&display=swap');
 #imglogo{
     width: 150px;
     height: 70px;
@@ -16,10 +16,45 @@
 }
 .my-btn{
     height: 57px;
+    background-image: url('../image/backg.PNG');
 }
 .botton{
 margin-top: 5%;
 }
 .box{
-    background-image: url("image/backbox.PNG");
+    background-image: url('../image/backbox.PNG');
+    padding: 20px;
+    margin-left: 1%;
+    color: white;
+}
+.serv-descr{
+    margin-left: 55px;
+}
+.serv{
+font-size: 22px;
+}
+.service{
+    width: 50px;
+    height: 50px;
+}
+.my-row{
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+.best-selling{
+font-size: 40px;
+font-family: 'Ruwudu', serif;
+padding-top: 12%;
+}
+.fivestar{
+    width: 80px;
+    height: 20px;
+}
+.product-image{
+    width: 287px;
+    height: 287px;
+}
+.pages a{
+    text-decoration: none;
+    color: black;
 }
