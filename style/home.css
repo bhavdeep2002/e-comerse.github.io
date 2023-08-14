@@ -62,3 +62,9 @@ padding-top: 12%;
     padding-left: 5%;
     padding-right: 5%;
 }
+.in{
+    border-width: 0.4px;
+    outline: none;
+    height: 32px;
+    background-color: white;
+}
