@@ -14,21 +14,21 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="width: 50%;">
                 <nav class="navbar navbar-light" style="display: flex;justify-content: flex-start;">
                     <a class="navbar-brand" href="#">
                         <img id="imglogo" src="image/baner.PNG" class="d-inline-block align-top" alt="">
                     </a>
-                    <div class="pages">
+                    <div class="pages my-col">
                         <a href="#">Everything</a>
                         <a href="groceries.html">Groceries</a>
                         <a href="#">Jiuce</a>
                     </div>
                 </nav>
             </div>
-            <div class="col-md-6">
-                <nav class="navbar navbar-light " style="display: flex;top: 27px;justify-content: flex-end;">
-                    <div class="pages">
+            <div class="col-md-6 col-mine" style="width: 50%;">
+                <nav class="navbar navbar-light " style="display: flex;top: 27px;justify-content: flex-end;padding: 0px;">
+                    <div class="pages my-col">
                         <a href="#">About</a>
                         <a href="#">Contact</a>
                         <a href="#">
@@ -36,6 +36,14 @@
                                 Rs:0.0
                             </span>
                         </a>
+                    </div>
+                    <div class="mobile">
+                        <span>£:0.00</span>
+                        <img id="cart-icon" src="image/-shopping-cart_90604.png" alt="">
+                        <input type="submit" id="menu" onclick="">'
+                    </div>
+                    <div class="menu">
+
                     </div>
                 </nav>
             </div>
@@ -45,8 +53,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-container">
-                            <input type="text" id="in">
-                             <input type="submit" onclick="search()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="text" id="in">
+                                    <input type="submit" onclick="search()">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-8">

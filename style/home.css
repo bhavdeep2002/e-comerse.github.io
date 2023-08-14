@@ -68,3 +68,32 @@ padding-top: 12%;
     height: 32px;
     background-color: white;
 }
+.menu{
+    display: none;
+}
+.mobile{
+    display: none;
+}
+#cart-icon{
+    width: 30px;
+}
+.col-mine{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+@media only screen and (max-width:768px){
+    .my-col{
+        display:none;
+    }
+    .mobile{
+        display: block;
+    }
+    #imglogo{
+        width: 120px;
+        height: 50px;
+    }
+    .col-mine{
+        position: relative;
+        top: -13px;
+    }
+}
