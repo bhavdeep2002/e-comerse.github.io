@@ -81,6 +81,28 @@ padding-top: 12%;
     padding-top: 8px;
     padding-bottom: 8px;
 }
+.image img{
+    width: 100%;
+}
+.my-image{
+    padding: 4% 11% 4% 11%;
+}
+.card{
+    width: 18rem;
+}
+.productname{
+    text-decoration: none;
+    color: black;
+}
+.card-body{
+    text-align: center;
+}
+.category{
+    font-size: 15px;
+    margin-bottom: 2%;
+    color: grey;
+}
+
 @media only screen and (max-width:768px){
     .my-col{
         display:none;
