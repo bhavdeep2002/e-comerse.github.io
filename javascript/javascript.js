@@ -10,8 +10,8 @@ class product{
 
 const currentpath =window.location.pathname;
 console.log(currentpath)
-if(currentpath.includes("/e-commerce.github.io/")){
-    if(currentpath==="/e-comerse.github.io/"){
+if(currentpath.includes("/")){
+    if(currentpath==="/"){
     console.log("index")
     let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG" )];
 
@@ -127,7 +127,7 @@ trendingproduct.forEach((product)=> {
 })
     }
 
-else if(currentpath==="/e-comerse.github.io/groceries.html"){
+else if(currentpath==="/groceries.html"){
     console.log("groceries")
     let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG"),]
 
