@@ -103,6 +103,24 @@ padding-top: 12%;
     color: grey;
 }
 
+.indexproduct{
+        display: inline-table;
+
+        margin-top: 2%;
+}
+
+@media (max-width: 1409px) { 
+
+    .groceriesproduct{
+
+        flex-basis: 50%;
+        margin-top: 2%;
+       
+    }
+ }
+    
+
+
 @media only screen and (max-width:768px){
     .my-col{
         display:none;
@@ -119,3 +137,4 @@ padding-top: 12%;
         top: -13px;
     }
 }
+
