@@ -5,14 +5,15 @@ class product{
         this.price=price;
         this.category=category;
         this.image=image;
-        this.display(id)
+        if(id==="trending" || id ==="bestselling"){
+            this.displayindex(id)
+        }
+        else{
+           this.displaygroceries(id)
+    }
     }
 
-   display(id){
-    const currentpage =document.body.id;
-    if(currentpage==="page1"){
-
-        console.log("index")
+   displayindex(id){
     
         const productcontainer=document.createElement("div")
         productcontainer.className='card'
@@ -48,7 +49,7 @@ class product{
         starimage.src='image/5-Stars-PNG-HD.png'
     
         const col =document.createElement("div")
-        col.className='col-md-3'
+        col.className="col-md-3 groceries"
     
         cardbody.appendChild(productcategory)
         anchorsamepage.appendChild(name)
@@ -66,8 +67,7 @@ class product{
     
    }
 
-   else if(currentpage==="page2"){
-    console.log("groceries")
+   displaygroceries(id){
     
     const productcontainer=document.createElement("div")
     productcontainer.className='card'
@@ -83,7 +83,7 @@ class product{
     cardbody.className='card-body'
 
     const productcategory =document.createElement("div")
-    productcategory.className='category'
+    productcategory.className="category"
     productcategory.textContent=`${this.category}`
     
     const name =document.createElement("h5")
@@ -103,7 +103,7 @@ class product{
     starimage.src='image/5-Stars-PNG-HD.png'
 
     const col =document.createElement("div")
-    col.className='col-md-3 groceriesproduct'
+    col.className="col-md-4 groceries"
 
     cardbody.appendChild(productcategory)
     anchorsamepage.appendChild(name)
@@ -116,21 +116,46 @@ class product{
     productcontainer.appendChild(cardbody)
     col.appendChild(productcontainer)
 
-    const groceries =document.getElementById("groceries")
-    groceries[0].appendChild(col)
-
+    const product =document.getElementById(id)
+    product.appendChild(col)
 
 }
+
+sort(){
+    
 }
 }
 
+ const search=() =>{
+    let input =document.getElementById("in").value.toUpperCase()
+    let list =document.querySelectorAll(".list")
+    
+   for (let i = 0; i < list.length; i++) {
+         
+        if(list[i].innerHTML.toUpperCase().trim().includes(input)){
+            list[i].style.display='';
+        }
+        else{
+            list[i].style.display="none";
+        }
+    
+   }
+
+    }
+
+    const listbar=()=>{
+        console.log("list")
+        let list =document.getElementById("my-ul")
+        list.style.display="block"
+
+    }
 
 
 {
     if(document.body.id==="page1"){
         let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","bestselling"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","bestselling"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","bestselling"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling")];
         
-        let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending"),]
+        let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending")]
         
         productlist.forEach(product => {
             console.log(product)
@@ -142,7 +167,9 @@ class product{
     }
     
     else{
-        let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG"),]
+        let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
+
+        groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"))
 
         groceries.forEach(product => {
             console.log(product)
