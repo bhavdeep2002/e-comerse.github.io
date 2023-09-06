@@ -109,6 +109,15 @@ padding-top: 12%;
 #my-ul{
     display: none;
 }
+.list{
+    cursor: pointer;
+}
+.char{
+    color: blue;
+}
+
+
+  
 
 @media (max-width:1375px) {
     .groceries{
