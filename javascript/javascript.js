@@ -6,9 +6,11 @@ class product{
         this.category=category;
         this.image=image;
         if(id==="trending" || id ==="bestselling"){
+            console.log(id)
             this.displayindex(id)
         }
         else{
+            console.log(id)
            this.displaygroceries(id)
     }
     }
@@ -121,11 +123,57 @@ class product{
 
 }
 
-sort(){
-    
-}
 }
 
+class Fil{
+    constructor(){
+
+        let lowerlimit =document.getElementsByClassName("filter-range")[0].value
+        let upperlimit =document.getElementsByClassName("filter-range")[1].value
+        let card =document.querySelectorAll(".card")
+        let colum =document.querySelectorAll(".col-md-4")
+        let groceries =document.getElementById("groceries")
+        const prices =document.querySelectorAll(".card-text")//<p>£19.00</p>
+        
+        const price=[]// empty array used to store 19.00 type of values
+
+        for (let i = 0,j=0; i < prices.length; i++,j++) {
+            let p1 =parseInt(prices[i].textContent.replace("£",""))
+
+            price[j]=p1;
+            
+        }
+       
+        for(let i=0;i<price.length;i++){
+            if(price[i]>=lowerlimit && price[i]<=upperlimit){
+                card[i].style.display=""
+            }
+            else{
+                colum[i].remove()
+            }
+        }
+ 
+        const currentcol =document.querySelectorAll(".col-md-4") // current dom col-md-4
+ 
+        if(currentcol.length===0){
+
+            const notfound= document.createElement("div")
+                notfound.className='col-md-12'
+                const message=document.createElement("div")
+                message.className='notfound'
+                message.textContent=`No Search Found`
+
+                notfound.appendChild(message)
+
+                groceries.appendChild(notfound)
+                
+        }
+    }
+}
+
+const filter=()=>{
+    let filter =new Fil()
+}
  
 const searchproduct =()=>{
     let input =document.getElementById("in").value.trim()
@@ -211,36 +259,31 @@ const search=() =>{// no 2: for filtering the search as typing
         
     }
 
-   
-
-
-
-{
-    if(document.body.id==="page1"){
-        let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","bestselling"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","bestselling"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","bestselling"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling")];
-        
-        let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending")]
-        
-        productlist.forEach(product => {
-            console.log(product)
-        });
-
-        trending.forEach(product => {
-            console.log(product)
-        });
-    }
+   {
+        if(document.body.id==="page1"){
+            let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","bestselling"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","bestselling"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","bestselling"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling")];
+            
+            let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending")]
+            
+            productlist.forEach(product => {
+                console.log(product)
+            });
     
-    else{
-        let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
-
-        groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"),new product("Organic Face Scrub",35.00,"Groceries","image/facescrub.PNG","groceries"),new product("Pulses From Organic Farm",15.00,"Groceries","image/dal.PNG" ,"groceries"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling"))
-
-        groceries.forEach(product => {
-            console.log(product)
-        });
-    }
-  
+            trending.forEach(product => {
+                console.log(product)
+            });
+        }
+        
+        else if(document.body.id==="page2") {
+            let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
     
-}
-
+            groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"),new product("Organic Face Scrub",35.00,"Groceries","image/facescrub.PNG","groceries"),new product("Pulses From Organic Farm",15.00,"Groceries","image/dal.PNG" ,"groceries"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","groceries"))
+    
+            groceries.forEach(product => {
+                console.log(product)
+            });
+        }
+      
+      
+   }
 

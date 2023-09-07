@@ -115,8 +115,19 @@ padding-top: 12%;
 .char{
     color: blue;
 }
+.filter-range
+{
+    width: 100%;
 
+}
 
+.filter{
+    margin-top: 20%;
+}
+.notfound{
+    font-size: 60px;
+    font-family: 'Noto Sans Vithkuqi', sans-serif;
+}
   
 
 @media (max-width:1375px) {
