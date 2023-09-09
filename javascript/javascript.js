@@ -126,53 +126,76 @@ class product{
 }
 
 class Fil{
-    constructor(){
-
-        let lowerlimit =document.getElementsByClassName("filter-range")[0].value
-        let upperlimit =document.getElementsByClassName("filter-range")[1].value
-        let card =document.querySelectorAll(".card")
-        let colum =document.querySelectorAll(".col-md-4")
+    constructor(lowerlimit,upperlimit,colum){
+        
         let groceries =document.getElementById("groceries")
         const prices =document.querySelectorAll(".card-text")//<p>£19.00</p>
-        
         const price=[]// empty array used to store 19.00 type of values
 
-        for (let i = 0,j=0; i < prices.length; i++,j++) {
+        this.lowerlimit=lowerlimit
+        this.upperlimit=upperlimit
+        this.colum=colum
+       
+
+            for (let i = 0,j=0; i <prices.length; i++,j++) {
+
             let p1 =parseInt(prices[i].textContent.replace("£",""))
 
             price[j]=p1;
             
         }
-       
-        for(let i=0;i<price.length;i++){
-            if(price[i]>=lowerlimit && price[i]<=upperlimit){
-                card[i].style.display=""
+       let count=0;// for counting how many displays has turned none
+
+        for(let i=0;i<price.length;i++){// displays flitered price product
+
+            if(price[i]>=this.lowerlimit && price[i]<=this.upperlimit){
+                this.colum[i].style.display="flex"
             }
             else{
-                colum[i].remove()
+                this.colum[i].style.display="none"
+                count++;
             }
         }
- 
-        const currentcol =document.querySelectorAll(".col-md-4") // current dom col-md-4
- 
-        if(currentcol.length===0){
 
-            const notfound= document.createElement("div")
-                notfound.className='col-md-12'
-                const message=document.createElement("div")
-                message.className='notfound'
-                message.textContent=`No Search Found`
+        if(count===this.colum.length){// if no search found (all products display become none)
+            console.log(count)
+            document.getElementsByClassName("notfound")[0].style.display="block"
 
-                notfound.appendChild(message)
-
-                groceries.appendChild(notfound)
-                
         }
+        else{// if not all product display become none means some products are visible for that we should not display notfound message
+            document.getElementsByClassName("notfound")[0].style.display="none"
+        }
+ 
     }
 }
 
-const filter=()=>{
-    let filter =new Fil()
+{// dynamically creating the products as object
+
+    if(document.body.id==="page1"){// this js is for page1 index.html
+        let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","bestselling"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","bestselling"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","bestselling"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling")];
+        
+        let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending")]
+        
+        productlist.forEach(product => {
+            console.log(product)
+        });
+
+        trending.forEach(product => {
+            console.log(product)
+        });
+    }
+    
+    else if(document.body.id==="page2") {// this page2 is for groceries.html
+        let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
+
+        groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"),new product("Organic Face Scrub",35.00,"Groceries","image/facescrub.PNG","groceries"),new product("Pulses From Organic Farm",15.00,"Groceries","image/dal.PNG" ,"groceries"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","groceries"))
+
+        groceries.forEach(product => {
+            console.log(product)
+        });
+    }
+  
+  
 }
  
 const searchproduct =()=>{
@@ -192,29 +215,39 @@ const searchproduct =()=>{
     }
 }
 
-const search=() =>{// no 2: for filtering the search as typing
-    listbar()
-    let input =document.getElementById("in").value.toUpperCase()
+const search=() =>{// no 1:
+
+    listbar()// no 2 the product search list is displayed 
+    
+    //filter's the list as typed
+
+    let input =document.getElementById("in").value.toUpperCase()// a --> A trim removes extra space after a
     let list =document.querySelectorAll(".list")
 
    for (let i = 0; i < list.length; i++) {
+    //list[i]--> <li>..</li> and list[i].toUpperCase().trim() ---> ASSORTED COFFEE without any space
+
          let li =list[i].textContent.toUpperCase().trim()// li contains textcontent of list[i]
         
-         if(li.indexOf(input)>-1)
+         if(li.indexOf(input)>-1)// for checking the li contains input or not (ex :- li= "ASSORTED COFFEE" ) input ="a"
+         // li.indexOf(input)---> 0 
         {   
-            let stringcolored =""
-            let colored =li.indexOf(input)
-          for(let i=0;i<li.length;i++){
-            if(li[i]===li[colored]){
-                stringcolored+="<span class='char'>" +li[colored] +'</span>'
+            let stringcolored =""// empty string used for identifying and showing matched charactor in blue color 
+            let colored =li.indexOf(input)// this returns index of matched character
+
+          for(let i=0;i<li.length;i++){// here we are triversing string which is inside li
+
+            if(i===colored){//
+                stringcolored+="<span class='char'>" +li[colored] +'</span>'//string containing colored characters
             }
             else{
-                stringcolored+=li[i];
+                stringcolored+=li[i];// assorted --> a index is 0 colored index is 0  (0===0) and for i=1,2,... other than matched index this line is executed
             }
 
           }
+           // stringcolored is ready then we do
 
-          if(input===""){
+          if(input===""){// if input is empty then no change
             list[i].innerHTML=list[i].innerHTML
           }
           else{
@@ -228,10 +261,9 @@ const search=() =>{// no 2: for filtering the search as typing
         }
     
    }
-
     }
 
-    {//no 4: for clicking a list element and adding their innerText in input
+    {//no 3: for clicking a list element and adding their innerText in input
     
     let input= document.getElementById("in")
     let list= document.querySelectorAll(".list")
@@ -247,7 +279,8 @@ const search=() =>{// no 2: for filtering the search as typing
 }
 
 
-    const listbar =()=>{// no 1: for showing list
+    const listbar =()=>{// no 2: for showing list
+
         let input =document.getElementById("in").value.trim()
         if(input===""){
             document.getElementById("my-ul").style.display="none"
@@ -256,34 +289,16 @@ const search=() =>{// no 2: for filtering the search as typing
         else{
             document.getElementById("my-ul").style.display="block"
         }
-        
+             
     }
 
-   {
-        if(document.body.id==="page1"){
-            let productlist=[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","bestselling"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","bestselling"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","bestselling"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","bestselling")];
-            
-            let trending =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","trending"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","trending"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","trending"),new product("Handpicked Red Chillies",19.00,"Groceries","image/redchilli.PNG","trending")]
-            
-            productlist.forEach(product => {
-                console.log(product)
-            });
-    
-            trending.forEach(product => {
-                console.log(product)
-            });
-        }
-        
-        else if(document.body.id==="page2") {
-            let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
-    
-            groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"),new product("Organic Face Scrub",35.00,"Groceries","image/facescrub.PNG","groceries"),new product("Pulses From Organic Farm",15.00,"Groceries","image/dal.PNG" ,"groceries"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","groceries"))
-    
-            groceries.forEach(product => {
-                console.log(product)
-            });
-        }
-      
-      
-   }
+  
 
+   let colum =document.querySelectorAll(".col-md-4")
+
+const filter=()=>{
+    
+    let lowerlimit =document.getElementsByClassName("filter-range")[0].value
+    let upperlimit =document.getElementsByClassName("filter-range")[1].value
+    let ob=new Fil(lowerlimit,upperlimit,colum)
+}
