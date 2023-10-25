@@ -1,111 +1,107 @@
 class product{
 
-    constructor(name,price,category,image,id){
-        this.name =name;
-        this.price=price;
-        this.category=category;
-        this.image=image;
-        if(id==="trending" || id ==="bestselling"){
-            console.log(id)
-            this.displayindex(id)
-        }
-        else{
-            console.log(id)
-           this.displaygroceries(id)
-    }
+    constructor(name, category, price, brand, images) {
+        this.name = name
+        this.category = category
+        this.price = price
+        this.brand = brand
+        this.images = images
+      
+          
+           this.display()
     }
 
-   displayindex(id){
+//    displayindex(id){
     
-        const productcontainer=document.createElement("div")
-        productcontainer.className='card'
+//         const productcontainer=document.createElement("div")
+//         productcontainer.className='card'
     
-        const anchor =document.createElement('a')
-        anchor.href=`#`;
+//         const anchor =document.createElement('a')
+//         anchor.href=`#`;
     
-        const productimg=document.createElement("img")
-        productimg.className='card-img-top product-image'
-        productimg.src=`${this.image}`
+//         const productimg=document.createElement("img")
+//         productimg.className='card-img-top product-image'
+//         productimg.src=`${this.image}`
     
-        const cardbody=document.createElement("div")
-        cardbody.className='card-body'
+//         const cardbody=document.createElement("div")
+//         cardbody.className='card-body'
     
-        const productcategory =document.createElement("div")
-        productcategory.className="category"
-        productcategory.textContent=`${this.category}`
+//         const productcategory =document.createElement("div")
+//         productcategory.className="category"
+//         productcategory.textContent=`${this.category}`
         
-        const name =document.createElement("h5")
-        name.className='card-title'
-        name.textContent=`${this.name}`
+//         const name =document.createElement("h5")
+//         name.className='card-title'
+//         name.textContent=`${this.name}`
     
-        const anchorsamepage=document.createElement('a')
-        anchorsamepage.href=`#`
-        anchorsamepage.className='productname'
+//         const anchorsamepage=document.createElement('a')
+//         anchorsamepage.href=`#`
+//         anchorsamepage.className='productname'
         
-        const cardtext =document.createElement("p")
-        cardtext.className='card-text'
-        cardtext.textContent=`£${this.price}.00`
+//         const cardtext =document.createElement("p")
+//         cardtext.className='card-text'
+//         cardtext.textContent=`£${this.price}.00`
     
-        const starimage=document.createElement("img")
-        starimage.className="fivestar"
-        starimage.src='image/5-Stars-PNG-HD.png'
+//         const starimage=document.createElement("img")
+//         starimage.className="fivestar"
+//         starimage.src='image/5-Stars-PNG-HD.png'
     
-        const col =document.createElement("div")
-        col.className="col-md-3 groceries"
+//         const col =document.createElement("div")
+//         col.className="col-md-3 groceries"
     
-        cardbody.appendChild(productcategory)
-        anchorsamepage.appendChild(name)
-        cardbody.appendChild(anchorsamepage)
-        cardbody.appendChild(cardtext)
-        cardbody.appendChild(starimage)
-        anchor.appendChild(productimg)
+//         cardbody.appendChild(productcategory)
+//         anchorsamepage.appendChild(name)
+//         cardbody.appendChild(anchorsamepage)
+//         cardbody.appendChild(cardtext)
+//         cardbody.appendChild(starimage)
+//         anchor.appendChild(productimg)
     
-        productcontainer.appendChild(anchor)
-        productcontainer.appendChild(cardbody)
-        col.appendChild(productcontainer)
+//         productcontainer.appendChild(anchor)
+//         productcontainer.appendChild(cardbody)
+//         col.appendChild(productcontainer)
 
-        const product =document.getElementById(id)
-        product.appendChild(col)
+//         const product =document.getElementById(id)
+//         product.appendChild(col)
     
-   }
+//    }
 
-   displaygroceries(id){
-    
-    const productcontainer=document.createElement("div")
-    productcontainer.className='card'
+   display() {
 
-    const anchor =document.createElement('a')
-    anchor.href=`#`;
+    const productcontainer = document.createElement("div")
+    productcontainer.className = 'card'
 
-    const productimg=document.createElement("img")
-    productimg.className='card-img-top product-image'
-    productimg.src=`${this.image}`
+    const anchor = document.createElement('a')
+    anchor.href = `#`;
 
-    const cardbody=document.createElement("div")
-    cardbody.className='card-body'
+    const productimg = document.createElement("img")
+    productimg.className = 'card-img-top product-image'
+    productimg.src = `${this.images[0]}`
 
-    const productcategory =document.createElement("div")
-    productcategory.className="category"
-    productcategory.textContent=`${this.category}`
-    
-    const name =document.createElement("h5")
-    name.className='card-title'
-    name.textContent=`${this.name}`
+    const cardbody = document.createElement("div")
+    cardbody.className = 'card-body'
 
-    const anchorsamepage=document.createElement('a')
-    anchorsamepage.href=`#`
-    anchorsamepage.className='productname'
-    
-    const cardtext =document.createElement("p")
-    cardtext.className='card-text'
-    cardtext.textContent=`£${this.price}.00`
+    const productcategory = document.createElement("div")
+    productcategory.className = "category"
+    productcategory.textContent = `${this.category}`
 
-    const starimage=document.createElement("img")
-    starimage.className="fivestar"
-    starimage.src='image/5-Stars-PNG-HD.png'
+    const name = document.createElement("h5")
+    name.className = 'card-title'
+    name.textContent = `${this.name}`
 
-    const col =document.createElement("div")
-    col.className="col-md-4 groceries"
+    const anchorsamepage = document.createElement('a')
+    anchorsamepage.href = `#`
+    anchorsamepage.className = 'productname'
+
+    const cardtext = document.createElement("p")
+    cardtext.className = 'card-text'
+    cardtext.textContent = `£${this.price}.00`
+
+    const starimage = document.createElement("img")
+    starimage.className = "fivestar"
+    starimage.src = 'image/5-Stars-PNG-HD.png'
+
+    const col = document.createElement("div")
+    col.className = "col-md-4 groceries"
 
     cardbody.appendChild(productcategory)
     anchorsamepage.appendChild(name)
@@ -118,11 +114,10 @@ class product{
     productcontainer.appendChild(cardbody)
     col.appendChild(productcontainer)
 
-    const product =document.getElementById(id)
+    const product = document.getElementById("groceries")
     product.appendChild(col)
 
 }
-
 }
 
 class Fil{
@@ -186,13 +181,35 @@ class Fil{
     }
     
     else if(document.body.id==="page2") {// this page2 is for groceries.html
-        let groceries =[new product("Assorted Coffee",19.00,"Groceries","image/coffee.PNG","groceries"),new product("Fresh Orange Juice",19.00,"Groceries","image/orangejuice.PNG","groceries"),new product("Hand Sanitizer",19.00,"Groceries","image/handsanatizer.PNG","groceries")]
+        if (navigator.onLine) {
+            fetch('https://dummyjson.com/products')
 
-        groceries.push(new product("Cashew Butter",19.00,"Groceries","image/casheo.PNG","groceries"),new product("Diabetic Cookies",25.00,"Groceries","image/cookies.PNG","groceries"),new product("Fresh Organic Honey",34.00,"Groceries","image/honey.PNG","groceries"),new product("Organic Face Scrub",35.00,"Groceries","image/facescrub.PNG","groceries"),new product("Pulses From Organic Farm",15.00,"Groceries","image/dal.PNG" ,"groceries"),new product("Natural Extracted Edible Oil",19.00,"Groceries","image/oil.PNG","groceries"))
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Response Error: ' + res.status);
+                    }
+                    else {
+                        return res.json()
+                    }
+                })
+                .then(json => {
 
-        groceries.forEach(product => {
-            console.log(product)
-        });
+                    json.products.forEach(prod => {
+                        new product(prod.title, prod.category, prod.price, prod.brand, prod.images)
+
+                    });
+
+                })
+
+                .catch(error => {
+                    console.error('Error' + error)
+                })
+
+        }
+        else {
+            console.error("No Internet")
+        }
+
     }
   
   
